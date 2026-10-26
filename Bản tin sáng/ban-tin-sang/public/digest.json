@@ -1,0 +1,113 @@
+{
+ "date": "2026-10-26",
+ "updated": "2026-10-26T07:00:00+07:00",
+ "categories": [
+  "Việt Nam",
+  "Thế giới",
+  "Thời tiết",
+  "Kinh tế & công nghệ",
+  "Thể thao",
+  "Sức khỏe",
+  "Giải trí"
+ ],
+ "items": [
+  {
+   "c": "Việt Nam",
+   "t": "Quốc hội xem xét các dự án luật về an ninh dữ liệu",
+   "s": "Đây là một trong những nội dung chính của chương trình thời sự sáng 26/10.",
+   "n": "Hà Nội Online",
+   "u": "https://hanoionline.vn/chuong-trinh-thoi-su-9h00-26-10-2026-246261026100859626.htm"
+  },
+  {
+   "c": "Việt Nam",
+   "t": "Hà Nội siết xử lý hành vi sản xuất hàng giả",
+   "s": "Thành phố đang đấu tranh quyết liệt với tình trạng làm hàng giả, theo bản tin thời sự 9h00.",
+   "n": "Hà Nội Online",
+   "u": "https://hanoionline.vn/chuong-trinh-thoi-su-9h00-26-10-2026-246261026100859626.htm"
+  },
+  {
+   "c": "Việt Nam",
+   "t": "Phà Cát Lái và Bình Khánh tăng giá vé từ 28/10",
+   "s": "Chi phí nhiên liệu tăng khiến giá vé điều chỉnh; vé ô tô tăng cao nhất, khoảng 11–13% so với trước.",
+   "n": "VnExpress",
+   "u": "https://vnexpress.net/thoi-su"
+  },
+  {
+   "c": "Việt Nam",
+   "t": "Cao tốc Tuyên Quang – Hà Giang xin gia hạn 7 gói thầu",
+   "s": "Mưa kéo dài, vướng mặt bằng và giá nhiên liệu biến động khiến chủ đầu tư đề xuất kéo dài đến hết năm 2026.",
+   "n": "VnExpress",
+   "u": "https://vnexpress.net/thoi-su"
+  },
+  {
+   "c": "Thời tiết",
+   "t": "Cả nước nắng, nhiệt cao nhất 33–34°C",
+   "s": "TP.HCM khoảng 25–27°C đến 32–34°C, chiều tối và đêm có mưa dông vài nơi. Hà Nội vẫn oi nóng, cao nhất khoảng 33°C.",
+   "n": "VietNamNet",
+   "u": "https://vietnamnet.vn/du-bao-thoi-tiet-26-10-2026-mien-bac-giam-nhiet-nhe-trung-bo-mua-rai-rac-2566057.html"
+  },
+  {
+   "c": "Thời tiết",
+   "t": "Cảnh báo lũ quét, sạt lở đất ở Tuyên Quang",
+   "s": "Mưa lớn kéo dài có thể gây lũ quét và sạt lở, ảnh hưởng giao thông và dân sinh.",
+   "n": "VietnamPlus",
+   "u": "https://www.vietnamplus.vn/thoi-tiet-ngay-2610-nhieu-noi-nang-nong-canh-bao-lu-quet-sat-lo-dat-tai-tuyen-quang-post1144186.vnp"
+  },
+  {
+   "c": "Thế giới",
+   "t": "Ông Lula tái đắc cử tổng thống Brazil",
+   "s": "Ông được tuyên bố thắng ở vòng hai bầu cử ngày 25/10.",
+   "n": "Al Jazeera",
+   "u": "https://www.aljazeera.com/news/"
+  },
+  {
+   "c": "Thế giới",
+   "t": "Tổng thống Serbia thừa nhận thất bại trong bầu cử",
+   "s": "Ông Vucic công nhận thua phong trào do sinh viên dẫn đầu.",
+   "n": "Al Jazeera",
+   "u": "https://www.aljazeera.com/news/"
+  },
+  {
+   "c": "Thế giới",
+   "t": "Căng thẳng Mỹ, Israel và Iran: chưa có đòn tấn công trong ngày",
+   "s": "Theo cập nhật ngày 25/10, ông Trump nói chưa tấn công hôm đó và các trung gian Qatar đã đến Tehran.",
+   "n": "Al Jazeera",
+   "u": "https://www.aljazeera.com/news/"
+  },
+  {
+   "c": "Thế giới",
+   "t": "Hai cơn bão quét qua Bắc Âu, khoảng 150.000 hộ mất điện",
+   "s": "Gió mạnh làm gián đoạn điện ở nhiều khu vực phía bắc châu Âu.",
+   "n": "Al Jazeera",
+   "u": "https://www.aljazeera.com/news/"
+  },
+  {
+   "c": "Thế giới",
+   "t": "Biểu tình ở Pháp leo thang chống chính phủ",
+   "s": "Làn sóng phản đối nhằm vào chính phủ của Tổng thống Macron tiếp tục gia tăng.",
+   "n": "The Daily Jagran",
+   "u": "https://www.thedailyjagran.com/education/news/todays-school-assembly-news-headline-october-26-2026-check-top-national-international-and-sports-news-here-10333930"
+  },
+  {
+   "c": "Kinh tế & công nghệ",
+   "t": "Amazon dự kiến chi khoảng 220 tỷ USD đầu tư năm 2026",
+   "s": "Lãnh đạo Amazon cho rằng nhu cầu AI từ phòng thí nghiệm và doanh nghiệp rất lớn, công ty có thể còn đầu tư thêm.",
+   "n": "AI Weekly",
+   "u": "https://aiweekly.co/ai-news-today"
+  },
+  {
+   "c": "Kinh tế & công nghệ",
+   "t": "Giá dùng mô hình AI lớn giảm tới khoảng 80% trong vài tháng",
+   "s": "Một phân tích cho rằng các mô hình mã nguồn mở đang làm các hãng khó giữ giá cao.",
+   "n": "AI Weekly",
+   "u": "https://aiweekly.co/ai-news-today"
+  },
+  {
+   "c": "Kinh tế & công nghệ",
+   "t": "Lỗ hổng nghiêm trọng ở AWS Multi Model Server",
+   "s": "Lỗi cho phép chạy mã tùy ý qua tệp mô hình độc hại, mức nghiêm trọng 9,8/10; nên cập nhật bản vá.",
+   "n": "AI Weekly",
+   "u": "https://aiweekly.co/ai-news-today"
+  }
+ ]
+}

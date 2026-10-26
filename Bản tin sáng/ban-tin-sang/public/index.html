@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bản tin sáng">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#0F2A3D">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Bản tin sáng</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F6F9;--card:#fff;--ink:#0F2A3D;--mute:#58707F;--line:#D6E1E8;--sun:#F2A100;--link:#0B6FA4;--soft:#E3EEF4;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root{--bg:#0E1A24;--card:#162633;--ink:#EAF2F7;--mute:#9DB3C1;--line:#26394A;--sun:#FFB92E;--link:#5CB8EA;--soft:#1D3242;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.wrap{max-width:560px;margin:0 auto;padding:20px 16px 48px}
+.hero{text-align:center;padding:8px 0 4px}
+.hero h1{margin:0;font-size:30px;font-weight:800;letter-spacing:-.02em}
+.hero p{margin:2px 0 0;color:var(--mute);font-size:15px}
+.arc{width:100%;max-width:300px;display:block;margin:6px auto 0}
+.bn{background:var(--soft);border-radius:12px;padding:10px 14px;font-size:14px;margin:8px 0 14px;text-align:center}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;-webkit-overflow-scrolling:touch}
+.chips button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 14px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.card.done{opacity:.55}
+.cat{font-size:13px;color:var(--link);font-weight:600}
+.card h3{margin:2px 0 4px;font-size:17px;line-height:1.35;font-weight:600}
+.card p{margin:0 0 10px;color:var(--mute);font-size:15px}
+.ft{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px}
+.ft a{color:var(--link);font-weight:600;text-decoration:none}
+.ft button{flex:none;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.ft button.on{background:var(--sun);border-color:var(--sun);color:#1b1400}
+.rem{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:18px}
+.rem h2{margin:0 0 6px;font-size:17px;font-weight:600}
+.rem .b{border:0;background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}
+.hint{font-size:13px;color:var(--mute);margin:8px 0 0}
+</style>
+<script>var ONESIGNAL_APP_ID="DAN_APP_ID_ONESIGNAL_VAO_DAY";</script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+window.OneSignalDeferred=window.OneSignalDeferred||[];
+OneSignalDeferred.push(async function(O){if(ONESIGNAL_APP_ID.indexOf('DAN_')!==0)await O.init({appId:ONESIGNAL_APP_ID})});
+</script>
+</head>
+<body>
+<div class="wrap">
+<div class="hero">
+<h1>Bản tin sáng</h1>
+<p id="dt">Đang tải…</p>
+<svg class="arc" viewBox="0 0 200 118" role="img" aria-label="Tiến độ đọc tin hôm nay">
+<path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="var(--line)" stroke-width="8" stroke-linecap="round"/>
+<path id="ap" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="var(--sun)" stroke-width="8" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3"/>
+<circle id="sun" cx="20" cy="100" r="11" fill="var(--sun)"/>
+<text id="cnt" x="100" y="92" text-anchor="middle" font-size="30" font-weight="800" fill="var(--ink)">0/0</text>
+<text x="100" y="112" text-anchor="middle" font-size="11" fill="var(--mute)">tin đã đọc</text>
+</svg>
+</div>
+<div class="bn" id="bn"></div>
+<div class="chips" id="chips"></div>
+<div id="list"></div>
+<div class="rem">
+<h2>Thông báo hằng ngày</h2>
+<button class="b" id="en" type="button">Bật thông báo</button>
+<p class="hint" id="ns">Bản tin gửi lúc 6:30 sáng, và 20:00 tối nhắc nếu bạn quên đọc.</p>
+</div>
+</div>
+<script>
+var D=[],CATS=[],K='',st={read:{}},filt='Tất cả';
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function safe(u){return /^https?:\/\//.test(u)?u:'#'}
+function save(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+function cnt(){return Object.keys(st.read).length}
+function render(){
+var n=D.length,r=cnt(),p=n?r/n:0,left=n-r;
+$('cnt').textContent=r+'/'+n;
+$('ap').setAttribute('stroke-dashoffset',(251.3*(1-p)).toFixed(1));
+$('sun').setAttribute('cx',(100-80*Math.cos(Math.PI*p)).toFixed(1));
+$('sun').setAttribute('cy',(100-80*Math.sin(Math.PI*p)).toFixed(1));
+$('bn').textContent=n===0?'Chưa có tin.':left===0?'Bạn đã đọc hết bản tin hôm nay. Hẹn bạn ngày mai.':'Hôm nay còn '+left+' tin chưa đọc.';
+var c='';['Tất cả'].concat(CATS).forEach(function(x){c+='<button type="button" data-c="'+esc(x)+'" aria-pressed="'+(x===filt)+'">'+esc(x)+'</button>'});
+$('chips').innerHTML=c;
+var h='',any=false;
+D.forEach(function(it,i){if(filt!=='Tất cả'&&it.c!==filt)return;any=true;var d=st.read[i];
+h+='<div class="card'+(d?' done':'')+'"><div class="cat">'+esc(it.c)+'</div><h3>'+esc(it.t)+'</h3>'+(it.s?'<p>'+esc(it.s)+'</p>':'')+'<div class="ft"><a href="'+esc(safe(it.u))+'" target="_blank" rel="noopener" data-i="'+i+'">Đọc bài gốc · '+esc(it.n)+'</a><button type="button" data-m="'+i+'" class="'+(d?'on':'')+'">'+(d?'Đã đọc':'Đã đọc?')+'</button></div></div>'});
+if(!any)h='<div class="card"><p style="margin:0">Mục này chưa có tin hôm nay.</p></div>';
+$('list').innerHTML=h}
+fetch('digest.json?'+Date.now()).then(function(r){return r.json()}).then(function(j){
+D=j.items||[];CATS=j.categories||[];K='ban-tin-'+j.date;
+try{var v=JSON.parse(localStorage.getItem(K));if(v)st=v}catch(e){}
+var d=new Date(j.date+'T00:00:00');
+$('dt').textContent=d.toLocaleDateString('vi-VN',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'});
+render()}).catch(function(){$('dt').textContent='';$('bn').textContent='Chưa tải được bản tin. Kiểm tra mạng rồi mở lại app.'});
+$('chips').onclick=function(e){var b=e.target.closest('button');if(!b)return;filt=b.dataset.c;render()};
+$('list').onclick=function(e){var m=e.target.closest('[data-m]'),a=e.target.closest('a[data-i]');
+if(m){var i=m.dataset.m;if(st.read[i])delete st.read[i];else st.read[i]=1;save();render()}
+else if(a){st.read[a.dataset.i]=1;save();setTimeout(render,300)}};
+$('en').onclick=function(){var s=$('ns');
+var ios=/iPhone|iPad/.test(navigator.userAgent),sa=window.navigator.standalone||matchMedia('(display-mode: standalone)').matches;
+if(ios&&!sa){s.textContent='Trên iPhone, hãy bấm Chia sẻ, chọn “Thêm vào Màn hình chính”, mở app từ đó rồi bật thông báo (cần iOS 16.4 trở lên).';return}
+if(ONESIGNAL_APP_ID.indexOf('DAN_')===0){s.textContent='Chưa điền OneSignal App ID trong file index.html.';return}
+OneSignalDeferred.push(async function(O){try{await O.Notifications.requestPermission();s.textContent=O.Notifications.permission?'Đã bật thông báo. Bản tin gửi lúc 6:30 sáng, 20:00 tối nhắc nếu bạn quên.':'Bạn chưa cho phép thông báo trong Cài đặt.'}catch(e){s.textContent='Không bật được thông báo: '+e.message}})};
+</script>
+</body>
+</html>
