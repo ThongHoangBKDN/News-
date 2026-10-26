@@ -1,4 +1,5 @@
 import os
+import subprocess
 import requests
 import feedparser
 
@@ -7,7 +8,7 @@ ONESIGNAL_APP_ID = os.environ.get("ONESIGNAL_APP_ID")
 ONESIGNAL_REST_KEY = os.environ.get("ONESIGNAL_REST_KEY")
 SITE_URL = os.environ.get("SITE_URL", "https://news-3sz.pages.dev")
 
-# Danh sách nguồn RSS mẫu (bạn có thể thay đổi link RSS tùy ý)
+# Danh sách nguồn RSS mẫu
 RSS_FEEDS = [
     "https://vnexpress.net/rss/tin-moi-nhat.rss"
 ]
@@ -56,15 +57,30 @@ def generate_html(articles):
 </body>
 </html>
 """
-    # Ghi đè nội dung vào file public/index.html
     os.makedirs("public", exist_ok=True)
     with open("public/index.html", "w", encoding="utf-8") as f:
         f.write(html_content)
-    print("Đã cập nhật file public/index.html thành công!")
+    print("Đã tạo file public/index.html thành công!")
+
+def commit_and_push():
+    try:
+        subprocess.run(["git", "config", "--global", "user.name", "github-actions[bot]"], check=True)
+        subprocess.run(["git", "config", "--global", "user.email", "github-actions[bot]@users.noreply.github.com"], check=True)
+        subprocess.run(["git", "add", "public/index.html"], check=True)
+        # Kiểm tra xem có thay đổi gì không trước khi commit
+        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if status.stdout.strip():
+            subprocess.run(["git", "commit", "-m", "Auto-update digest index.html [skip ci]"], check=True)
+            subprocess.run(["git", "push"], check=True)
+            print("Đã đẩy file index.html lên GitHub thành công!")
+        else:
+            print("Không có thay đổi mới để commit.")
+    except Exception as e:
+        print(f"Lỗi khi push code lên GitHub: {e}")
 
 def send_onesignal_notification():
     if not ONESIGNAL_APP_ID or not ONESIGNAL_REST_KEY:
-        print("Thiếu thông tin OneSignal App ID hoặc Rest Key, bỏ qua bước gửi thông báo.")
+        print("Thiếu thông tin OneSignal, bỏ qua bước gửi thông báo.")
         return
 
     url = "https://onesignal.com/api/v1/notifications"
@@ -93,6 +109,7 @@ if __name__ == "__main__":
     news = fetch_news()
     if news:
         generate_html(news)
+        commit_and_push()
         send_onesignal_notification()
     else:
         print("Không có bài viết nào được cào về.")
